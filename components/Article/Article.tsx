@@ -121,6 +121,20 @@ export const Article: React.FC<{ title: string; mdText: string }> = ({
             li: ({ node, children, ...props }) => {
               return <li>{children}</li>
             },
+            a: ({ node, href, children, ...props }) => {
+              return (
+                <a
+                  href={href}
+                  className={classNames(
+                    'text-blue-500',
+                    'hover:text-blue-700',
+                    'hover:underline'
+                  )}
+                >
+                  {children}
+                </a>
+              )
+            },
           }}
         />
       </div>

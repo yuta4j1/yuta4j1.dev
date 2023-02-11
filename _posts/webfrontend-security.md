@@ -26,7 +26,7 @@ https://developer.cybozu.io/hc/ja/articles/201850320-JavaScript%E3%81%A7%E3%82%B
 
 ReactやVueはテンプレートにバインドされるデータに関しては基本的にエスケープされる。
 
-```typescript=
+```typescript
 const App () => {
   return (
     <div>{'<hogehoge />'}</div>
@@ -34,7 +34,7 @@ const App () => {
 }
 ```
 
-```typescript=
+```typescript
 const App () => {
   return (
     <div>{'&lt;hogehoge /&gt;'}</div>
@@ -85,14 +85,14 @@ Content-Security-Policy: default-src 'self'
 
 ## target="_blank"の脆弱性
 
-```htmlembedded=
+```html
 <a href="hogehoge" target="_blank">
 ```
 
 リンク押下で別タブ表示する場合、```target="_blank"```と指定する。
 
 ただこうするだけだと、遷移先の画面から、window.openerオブジェクトを使用して遷移元の画面を操作できてしまう。
-```
+```javascript
 window.opener.location = "http://localhost:8081/"
 ```
 とういうのも、
@@ -102,7 +102,7 @@ window.opener
 で開かれたウィンドウは、プロセスとスレッドを共有してしまう。
 そのため、遷移先の画面のJavaScriptで重い処理を実行すると、遷移元の画面が重くなってしまうケースがある。
 
-```htmlembedded=
+```html
 <a href="hogehoge" target="_blank" rel="noopener">
 ```
 
