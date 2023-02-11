@@ -20,7 +20,7 @@ export const Article: React.FC<{ title: string; mdText: string }> = ({
       )}
     >
       <div
-        className={classNames('w-12', 'h-2', 'bg-blue-400', 'mx-6', 'mb-2')}
+        className={classNames('w-12', 'h-2', 'bg-blue-400', 'mx-6', 'mb-6')}
       ></div>
       <h1 className={classNames('font-bold', 'py-2', 'px-6', 'text-3xl')}>
         {title}
@@ -46,14 +46,16 @@ export const Article: React.FC<{ title: string; mdText: string }> = ({
               </h2>
             ),
             h3: ({ node, ...props }) => (
-              <h3 className={classNames('py-3', 'text-xl')} {...props} />
+              <h3
+                className={classNames('pt-4', 'pb-1', 'text-xl', 'font-bold')}
+                {...props}
+              />
             ),
             p: ({ node, ...props }) => (
               <p className={classNames('py-2')} {...props} />
             ),
             code: ({ node, inline, className, children, ...props }) => {
               const match = /language-(\w+)/.exec(className || '')
-              console.log('match', match)
               return !inline && match ? (
                 <Syntax
                   style={twilight}
@@ -61,7 +63,15 @@ export const Article: React.FC<{ title: string; mdText: string }> = ({
                   children={String(children).replace(/\n$/, '')}
                 />
               ) : (
-                <code className={classNames('px-2', 'bg-gray-200', 'rounded')}>
+                <code
+                  className={classNames(
+                    'px-2',
+                    'py-1',
+                    'text-sm',
+                    'bg-gray-200',
+                    'rounded'
+                  )}
+                >
                   {children}
                 </code>
               )

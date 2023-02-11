@@ -23,7 +23,6 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
     <div className={classNames('flex', 'justify-center')}>
       <article
         className={classNames(
-          'w-3/5',
           'px-4',
           'py-3',
           'border-solid',
@@ -52,7 +51,9 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
             <p className={classNames('font-semibold', 'text-lg')}>
               <Link href={`/post/${slug}`}>{title}</Link>
             </p>
-            <p className={classNames('py-2')}>{mdContentOutset(content)}</p>
+            <p className={classNames('py-2', 'text-sm', 'text-gray-600')}>
+              {mdContentOutset(content)}
+            </p>
             <div className={classNames('flex')}>
               <div>{tags && tags.map((v, i) => <Tag key={i}>{v}</Tag>)}</div>
               <div className={classNames('ml-auto')}>
