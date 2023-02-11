@@ -10,8 +10,8 @@ export const Article: React.FC<{ title: string; mdText: string }> = ({
   mdText,
 }) => {
   return (
-    <article>
-      <h1 className={classNames('font-bold', 'text-lg', 'py-2', 'px-6')}>
+    <article className={classNames('md:w-9/12', 'lg:w-9/12', 'xl:w-7/12', 'mb-16')}>
+      <h1 className={classNames('font-bold', 'py-2', 'px-6', 'text-2xl')}>
         {title}
       </h1>
       <div className={classNames('px-6', 'py-4')}>

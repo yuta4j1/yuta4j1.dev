@@ -33,19 +33,21 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         )}
       >
         <div className={classNames('flex')}>
-          <div
-            className={classNames(
-              'bg-blue-100',
-              'rounded-lg',
-              'p-7',
-              'h-28',
-              'text-center'
-            )}
-          >
-            <span className={classNames('text-5xl')}>
-              {nodeEmoji.emojify(`:${emoji}:`)}
-            </span>
-          </div>
+          <Link href={`/post/${slug}`}>
+            <div
+              className={classNames(
+                'bg-blue-100',
+                'rounded-lg',
+                'p-7',
+                'h-28',
+                'text-center'
+              )}
+            >
+              <span className={classNames('text-5xl')}>
+                {nodeEmoji.emojify(`:${emoji}:`)}
+              </span>
+            </div>
+          </Link>
           <div className={classNames('ml-6')}>
             <p className={classNames('font-semibold', 'text-lg')}>
               <Link href={`/post/${slug}`}>{title}</Link>

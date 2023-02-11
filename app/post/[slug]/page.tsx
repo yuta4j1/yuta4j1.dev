@@ -14,12 +14,11 @@ export default async function PostEntry({
   const post = await getPostBySlug(slug, ['slug', 'title', 'content'])
 
   return (
-    <div>
-      <div className={classNames('h-10')}></div>
-      <div className={classNames('flex', 'justify-center')}>
+    <main>
+      <div className={classNames('flex', 'justify-center', 'mt-10')}>
         <Article title={post.title} mdText={post.content} />
       </div>
-    </div>
+    </main>
   )
 }
 
