@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 import ReactMarkdown from 'react-markdown'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import Syntax from 'react-syntax-highlighter/dist/esm/default-highlight'
 import { twilight } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import gfm from 'remark-gfm'
 
@@ -41,7 +41,7 @@ export const Article: React.FC<{ title: string; mdText: string }> = ({
             code: ({ node, inline, className, children, ...props }) => {
               const match = /language-(\w+)/.exec(className || '')
               return !inline && match ? (
-                <SyntaxHighlighter
+                <Syntax
                   style={twilight}
                   language={match[1]}
                   children={String(children).replace(/\n$/, '')}
