@@ -1,13 +1,7 @@
 import styles from '../styles/Home.module.css'
 import PostList from '../components/PostList'
 import { getAllPosts } from '../libs/api'
-
-type Post = {
-  id: string
-  title: string
-  content: string
-  tags: string[]
-}
+import type { Post } from '../interfaces/post'
 
 async function getPosts(): Promise<Post[]> {
   const posts = await getAllPosts(['slug', 'content', 'title', 'date'])

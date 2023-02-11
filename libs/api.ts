@@ -1,6 +1,7 @@
 import fs from 'fs'
 import { join } from 'path'
 import matter from 'gray-matter'
+import type { Post } from '../interfaces/post'
 
 const postsDirectory = join(process.cwd(), '_posts')
 
@@ -34,13 +35,6 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
   })
 
   return items
-}
-
-type Post = {
-  id: string
-  title: string
-  content: string
-  tags: string[]
 }
 
 export function getAllPosts(fields: string[] = []) {
