@@ -4,4 +4,5 @@ export type Post = {
   content: string
   tags: string[]
   date: string
+  emoji: string
 }

@@ -30,7 +30,11 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
     }
 
     if (typeof data[field] !== 'undefined') {
-      items[field] = data[field]
+      if (field === 'tags') {
+        items[field] = data[field].split(',')
+      } else {
+        items[field] = data[field]
+      }
     }
   })
 

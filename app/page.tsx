@@ -4,7 +4,14 @@ import { getAllPosts } from '../libs/api'
 import type { Post } from '../interfaces/post'
 
 async function getPosts(): Promise<Post[]> {
-  const posts = await getAllPosts(['slug', 'content', 'title', 'date'])
+  const posts = await getAllPosts([
+    'slug',
+    'content',
+    'title',
+    'date',
+    'emoji',
+    'tags',
+  ])
   console.log('getPosts', posts)
   return posts
 }

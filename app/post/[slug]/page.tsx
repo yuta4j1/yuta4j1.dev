@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation'
 import classNames from 'classnames'
 import Article from '../../../components/Article'
 import { getAllPosts, getPostBySlug } from '../../../libs/api'
-import type { Post } from '../../../interfaces/post'
 
 export default async function PostEntry({
   params,

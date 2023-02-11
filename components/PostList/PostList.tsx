@@ -5,7 +5,7 @@ import type { Post } from '../../interfaces/post'
 
 export const PostList: React.FC<{ posts: Post[] }> = ({ posts }) => {
   return (
-    <div className={classNames('grid', 'gap-3')}>
+    <div className={classNames('grid', 'gap-6', 'my-16')}>
       {posts.map(v => (
         <ArticleCard key={v.slug} {...v} />
       ))}
