@@ -126,7 +126,7 @@ export const Article: React.FC<{ title: string; mdText: string }> = ({
                     'hover:underline'
                   )}
                 >
-                  {children}
+                  <span className={classNames('break-words')}>{children}</span>
                 </a>
               )
             },
