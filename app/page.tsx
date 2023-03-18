@@ -12,7 +12,6 @@ async function getPosts(): Promise<Post[]> {
     'emoji',
     'tags',
   ])
-  console.log('getPosts', posts)
   return posts
 }
 
