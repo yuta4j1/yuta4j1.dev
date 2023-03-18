@@ -2,7 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 import ReactMarkdown from 'react-markdown'
 import Syntax from 'react-syntax-highlighter/dist/esm/prism'
-import { twilight } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import gfm from 'remark-gfm'
 
 export const Article: React.FC<{ title: string; mdText: string }> = ({
@@ -12,7 +12,7 @@ export const Article: React.FC<{ title: string; mdText: string }> = ({
   return (
     <article
       className={classNames(
-        'md:w-9/12',
+        'md:w-11/12',
         'lg:w-9/12',
         'xl:w-7/12',
         'mb-16',
@@ -38,7 +38,7 @@ export const Article: React.FC<{ title: string; mdText: string }> = ({
                   'border-solid',
                   'border-b-2',
                   'border-gray-300',
-                  'mt-6',
+                  'mt-10',
                   'mb-2'
                 )}
               >
@@ -58,7 +58,7 @@ export const Article: React.FC<{ title: string; mdText: string }> = ({
               const match = /language-(\w+)/.exec(className || '')
               return !inline && match ? (
                 <Syntax
-                  style={twilight}
+                  style={oneDark}
                   language={match[1]}
                   children={String(children).replace(/\n$/, '')}
                 />
@@ -85,7 +85,8 @@ export const Article: React.FC<{ title: string; mdText: string }> = ({
                   className={classNames(
                     'border-solid',
                     'p-2',
-                    'border-gray-300'
+                    'border-gray-300',
+                    'bg-gray-100'
                   )}
                   style={{
                     borderWidth: '1px',

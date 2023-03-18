@@ -7,7 +7,7 @@ export const Tag: React.FC<{
   return (
     <span
       className={classNames(
-        'px-3',
+        'px-2',
         'py-1',
         'rounded-sm',
         'bg-blue-50',
