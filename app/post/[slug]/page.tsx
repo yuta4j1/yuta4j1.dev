@@ -1,4 +1,3 @@
-import { GetStaticPropsContext } from 'next'
 import { notFound } from 'next/navigation'
 import classNames from 'classnames'
 import Article from '../../../components/Article'
@@ -6,7 +5,9 @@ import { getAllPosts, getPostBySlug } from '../../../libs/api'
 
 export default async function PostEntry({
   params,
-}: GetStaticPropsContext<{ slug: string }>) {
+}: {
+  params: { slug: string }
+}) {
   if (!params) {
     notFound()
   }
@@ -32,7 +33,6 @@ export default async function PostEntry({
 
 export async function generateStaticParams() {
   const posts = await getAllPosts(['slug', 'content', 'title', 'date'])
-  console.log('getPosts', posts)
   return posts.map(v => ({
     slug: v.slug,
   }))
