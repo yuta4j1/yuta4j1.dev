@@ -27,6 +27,7 @@ export const Article: React.FC<{ title: string; mdText: string }> = ({
       </h1>
       <div className={classNames('px-6', 'py-4')}>
         <ReactMarkdown
+          // eslint-disable-next-line
           children={mdText}
           remarkPlugins={[gfm]}
           components={{
@@ -60,6 +61,7 @@ export const Article: React.FC<{ title: string; mdText: string }> = ({
                 <Syntax
                   style={oneDark}
                   language={match[1]}
+                  // eslint-disable-next-line
                   children={String(children).replace(/\n$/, '')}
                 />
               ) : (
