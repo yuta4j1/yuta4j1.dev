@@ -6,15 +6,31 @@ import '../../styles/globals.css'
 export const Header = () => {
   return (
     <nav
-      className={classNames('border-solid', 'border-b-2', 'border-gray-200')}
+      className={classNames(
+        'flex',
+        'justify-center',
+        'border-solid',
+        'border-b-2',
+        'border-gray-200'
+      )}
     >
-      <ul className={classNames('list-none', 'flex')}>
-        <li className={classNames('p-4', 'sm:p-8', 'md:p-4')}>
-          <p className={classNames('font-semibold', 'text-lg')}>
-            <Link href={'/'}>yuta4j1.dev</Link>
-          </p>
-        </li>
-      </ul>
+      <div
+        className={classNames(
+          'sm:w-11/12',
+          'md:w-11/12',
+          'lg:w-9/12',
+          'xl:w-7/12',
+          'w-11/12'
+        )}
+      >
+        <ul className={classNames('list-none', 'flex')}>
+          <li className={classNames('p-4', 'sm:p-8', 'md:p-4')}>
+            <p className={classNames('font-semibold', 'text-lg')}>
+              <Link href={'/'}>yuta4j1.dev</Link>
+            </p>
+          </li>
+        </ul>
+      </div>
     </nav>
   )
 }

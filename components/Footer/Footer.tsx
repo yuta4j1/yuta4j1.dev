@@ -1,17 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
 
-/*
-.footer {
-  display: flex;
-  flex: 1;
-  padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
-  justify-content: center;
-  align-items: center;
-}
-*/
-
 export const Footer = () => {
   return (
     <footer
@@ -24,7 +13,20 @@ export const Footer = () => {
         'items-center'
       )}
     >
-      ©️ 2022 yuta4j1. All rights reserved. This site was designed by yuta4j1.
+      <div
+        className={classNames(
+          'sm:w-11/12',
+          'md:w-11/12',
+          'lg:w-9/12',
+          'xl:w-7/12',
+          'w-11/12'
+        )}
+      >
+        <span className={classNames('w-full', 'text-center')}>
+          ©️ 2022 yuta4j1. All rights reserved. This site was designed by
+          yuta4j1.
+        </span>
+      </div>
     </footer>
   )
 }

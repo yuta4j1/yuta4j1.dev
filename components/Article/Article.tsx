@@ -10,15 +10,7 @@ export const Article: React.FC<{ title: string; mdText: string }> = ({
   mdText,
 }) => {
   return (
-    <article
-      className={classNames(
-        'md:w-11/12',
-        'lg:w-9/12',
-        'xl:w-7/12',
-        'mb-16',
-        'leading-relaxed'
-      )}
-    >
+    <article className={classNames('mb-16', 'leading-relaxed')}>
       <div
         className={classNames('w-12', 'h-2', 'bg-blue-400', 'mx-6', 'mb-6')}
       ></div>
