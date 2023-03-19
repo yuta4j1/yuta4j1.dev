@@ -22,7 +22,7 @@ export default async function PostEntry({
           'md:w-11/12',
           'lg:w-9/12',
           'xl:w-7/12',
-          'w-11/12'
+          'w-full'
         )}
       >
         <Article title={post.title} mdText={post.content} />
