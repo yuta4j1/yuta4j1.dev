@@ -106,15 +106,22 @@ export const Article: React.FC<{ title: string; mdText: string }> = ({
                 </td>
               )
             },
+            ol: ({ node, children, ...props }) => {
+              return (
+                <ul className={classNames('my-2', 'px-4', 'list-decimal')}>
+                  {children}
+                </ul>
+              )
+            },
             ul: ({ node, children, ...props }) => {
               return (
-                <ul className={classNames('my-2', 'list-disc', 'px-4')}>
+                <ul className={classNames('my-2', 'px-4', 'list-disc')}>
                   {children}
                 </ul>
               )
             },
             li: ({ node, children, ...props }) => {
-              return <li>{children}</li>
+              return <li className={classNames('my-2')}>{children}</li>
             },
             a: ({ node, href, children, ...props }) => {
               return (
