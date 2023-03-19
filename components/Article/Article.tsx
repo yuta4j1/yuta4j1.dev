@@ -130,6 +130,22 @@ export const Article: React.FC<{ title: string; mdText: string }> = ({
                 </a>
               )
             },
+            blockquote: ({ node, children, ...props }) => {
+              return (
+                <blockquote
+                  className={classNames(
+                    'p-2',
+                    'my-2',
+                    'text-gray-500',
+                    'border-solid',
+                    'border-l-4',
+                    'border-gray-400'
+                  )}
+                >
+                  {children}
+                </blockquote>
+              )
+            },
           }}
         />
       </div>
