@@ -32,7 +32,7 @@ export const Article: React.FC<{ title: string; mdText: string }> = ({
                   'border-b-2',
                   'border-gray-300',
                   'mt-10',
-                  'mb-2'
+                  'mb-4'
                 )}
               >
                 {children}
