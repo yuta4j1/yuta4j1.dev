@@ -31,7 +31,11 @@ export const Header = () => {
             </p>
           </li>
           <li className={classNames('ml-auto', 'mt-auto', 'mb-auto')}>
-            <a href="https://github.com/yuta4j1/yuta4j1.dev" target={'_blank'}>
+            <a
+              href="https://github.com/yuta4j1/yuta4j1.dev"
+              target={'_blank'}
+              aria-label="GitHub Repository"
+            >
               <FiGithub size={24} />
             </a>
           </li>
