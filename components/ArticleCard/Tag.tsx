@@ -11,7 +11,7 @@ export const Tag: React.FC<{
         'py-1',
         'rounded-sm',
         'bg-blue-50',
-        'text-blue-500',
+        'text-blue-600',
         'text-xs',
         'mr-4'
       )}

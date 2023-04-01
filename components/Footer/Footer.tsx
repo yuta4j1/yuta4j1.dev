@@ -19,12 +19,12 @@ export const Footer = () => {
           'md:w-11/12',
           'lg:w-9/12',
           'xl:w-7/12',
-          'w-11/12'
+          'w-11/12',
+          'text-center'
         )}
       >
-        <span className={classNames('w-full', 'text-center')}>
-          ©️ 2022 yuta4j1. All rights reserved. This site was designed by
-          yuta4j1.
+        <span className={classNames('w-full')}>
+          ©️ 2022 yuta4j1. All rights reserved.
         </span>
       </div>
     </footer>
