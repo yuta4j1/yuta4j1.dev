@@ -1,13 +1,25 @@
+import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import classNames from 'classnames'
 import Article from '../../../components/Article'
 import { getAllPosts, getPostBySlug } from '../../../libs/api'
 
-export default async function PostEntry({
-  params,
-}: {
+type PageProps = {
   params: { slug: string }
-}) {
+}
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { slug } = params
+  const post = await getPostBySlug(slug, ['title'])
+
+  return {
+    title: post.title,
+  }
+}
+
+export default async function PostEntry({ params }: PageProps) {
   if (!params) {
     notFound()
   }
