@@ -1,6 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 import Link from 'next/link'
+import { FiGithub } from 'react-icons/fi'
 import '../../styles/globals.css'
 
 export const Header = () => {
@@ -28,6 +29,11 @@ export const Header = () => {
             <p className={classNames('font-semibold', 'text-lg')}>
               <Link href={'/'}>yuta4j1.dev</Link>
             </p>
+          </li>
+          <li className={classNames('ml-auto', 'mt-auto', 'mb-auto')}>
+            <a href="https://github.com/yuta4j1/yuta4j1.dev" target={'_blank'}>
+              <FiGithub size={24} />
+            </a>
           </li>
         </ul>
       </div>
