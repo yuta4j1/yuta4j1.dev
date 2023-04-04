@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 import classNames from 'classnames'
 import ReactMarkdown from 'react-markdown'
 import Syntax from 'react-syntax-highlighter/dist/esm/prism'
@@ -47,7 +48,7 @@ export const Article: React.FC<{ title: string; mdText: string }> = ({
             p: ({ node, ...props }) => (
               <p className={classNames('py-2')} {...props} />
             ),
-            code: ({ node, inline, className, children, ...props }) => {
+            code: ({ node, inline, className, children }) => {
               const match = /language-(\w+)/.exec(className || '')
               return !inline && match ? (
                 <Syntax
@@ -70,10 +71,10 @@ export const Article: React.FC<{ title: string; mdText: string }> = ({
                 </code>
               )
             },
-            table: ({ node, children, ...props }) => {
+            table: ({ children }) => {
               return <table className={classNames('my-4')}>{children}</table>
             },
-            th: ({ node, children, ...props }) => {
+            th: ({ children }) => {
               return (
                 <th
                   className={classNames(
@@ -90,7 +91,7 @@ export const Article: React.FC<{ title: string; mdText: string }> = ({
                 </th>
               )
             },
-            td: ({ node, children, ...props }) => {
+            td: ({ children }) => {
               return (
                 <td
                   className={classNames(
@@ -106,24 +107,24 @@ export const Article: React.FC<{ title: string; mdText: string }> = ({
                 </td>
               )
             },
-            ol: ({ node, children, ...props }) => {
+            ol: ({ children }) => {
               return (
                 <ul className={classNames('my-2', 'px-4', 'list-decimal')}>
                   {children}
                 </ul>
               )
             },
-            ul: ({ node, children, ...props }) => {
+            ul: ({ children }) => {
               return (
                 <ul className={classNames('my-2', 'px-4', 'list-disc')}>
                   {children}
                 </ul>
               )
             },
-            li: ({ node, children, ...props }) => {
+            li: ({ children }) => {
               return <li className={classNames('my-2')}>{children}</li>
             },
-            a: ({ node, href, children, ...props }) => {
+            a: ({ href, children }) => {
               return (
                 <a
                   href={href}
@@ -137,7 +138,7 @@ export const Article: React.FC<{ title: string; mdText: string }> = ({
                 </a>
               )
             },
-            blockquote: ({ node, children, ...props }) => {
+            blockquote: ({ children }) => {
               return (
                 <blockquote
                   className={classNames(
@@ -153,6 +154,23 @@ export const Article: React.FC<{ title: string; mdText: string }> = ({
                   {children}
                 </blockquote>
               )
+            },
+            img: ({ src, alt }) => {
+              if (src && alt) {
+                return (
+                  <div style={{ position: 'relative', height: 400 }}>
+                    <Image
+                      src={src}
+                      alt={alt}
+                      fill
+                      style={{
+                        objectFit: 'contain',
+                      }}
+                    />
+                  </div>
+                )
+              }
+              return <></>
             },
           }}
         />
