@@ -11,7 +11,7 @@ export const Article: React.FC<{ title: string; mdText: string }> = ({
   mdText,
 }) => {
   return (
-    <article className={classNames('mb-16', 'leading-relaxed')}>
+    <article className={classNames('mb-16', 'leading-loose')}>
       <div
         className={classNames('w-12', 'h-2', 'bg-blue-400', 'mx-6', 'mb-6')}
       ></div>
@@ -57,7 +57,7 @@ export const Article: React.FC<{ title: string; mdText: string }> = ({
                   // eslint-disable-next-line
                   children={String(children).replace(/\n$/, '')}
                 />
-              ) : (
+              ) : inline ? (
                 <code
                   className={classNames(
                     'px-2',
@@ -69,6 +69,19 @@ export const Article: React.FC<{ title: string; mdText: string }> = ({
                 >
                   {children}
                 </code>
+              ) : (
+                <pre
+                  className={classNames(
+                    'px-4',
+                    'py-4',
+                    'text-sm',
+                    'bg-gray-200',
+                    'rounded',
+                    'whitespace-pre-wrap'
+                  )}
+                >
+                  <code>{children}</code>
+                </pre>
               )
             },
             table: ({ children }) => {
