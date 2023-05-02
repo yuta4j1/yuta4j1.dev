@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import PostList from '../components/PostList'
+import PostList from './_components/PostList'
 import { getAllPosts } from '../libs/api'
 import type { Post } from '../interfaces/post'
 

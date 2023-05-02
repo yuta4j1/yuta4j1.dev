@@ -1,7 +1,8 @@
 import '../styles/globals.css'
 import { Metadata } from 'next'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import classNames from 'classnames'
+import Header from './_components/Header'
+import Footer from './_components/Footer'
 
 export const metadata: Metadata = {
   title: 'yuta4j1.dev',
@@ -18,7 +19,7 @@ export default function RootLayout({
     <html lang="ja">
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <body>
+      <body className={classNames("font-sans")}>
         <Header />
         {children}
         <Footer />
