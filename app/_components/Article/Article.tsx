@@ -239,7 +239,7 @@ export async function Article({
                           <div
                             className={classNames(
                               'text-sm',
-                              'text-gray-400',
+                              'text-gray-500',
                               'mt-2',
                               'truncate'
                             )}
@@ -250,7 +250,7 @@ export async function Article({
                             <div
                               className={classNames(
                                 'text-xs',
-                                'text-gray-500',
+                                'text-gray-600',
                                 'mt-2'
                               )}
                             >
