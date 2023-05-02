@@ -84,7 +84,6 @@ export async function Article({
 }) {
   const ogTargetLinks = extractLinks(mdText)
   const cardLinkInfos = await ogFetch(ogTargetLinks)
-  console.log('cardLinkInfos:: ', cardLinkInfos)
 
   return (
     <article className={classNames('mb-16', 'leading-loose')}>
