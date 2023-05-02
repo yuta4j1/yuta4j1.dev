@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import classNames from 'classnames'
-import Article from '../../../components/Article'
+import Article from '../../_components/Article'
 import { getAllPosts, getPostBySlug } from '../../../libs/api'
 
 type PageProps = {
@@ -38,6 +38,7 @@ export default async function PostEntry({ params }: PageProps) {
           'w-full'
         )}
       >
+        {/* @ts-expect-error Server Component */}
         <Article title={post.title} mdText={post.content} />
       </div>
     </main>
