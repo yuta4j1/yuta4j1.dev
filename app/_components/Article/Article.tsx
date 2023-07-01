@@ -6,7 +6,6 @@ import Syntax from 'react-syntax-highlighter/dist/esm/prism'
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import gfm from 'remark-gfm'
 import * as cheerio from 'cheerio'
-import { join } from 'node:path'
 import { FaviconImage } from './FaviconImage'
 
 type CardLink = {
@@ -74,7 +73,7 @@ async function ogFetch(links: string[] | null): Promise<CardLinkInfos | null> {
               description =
                 $('meta[property="description"]').attr('content') ?? ''
             }
-            const faviconUrl = join(originFromUrl(link), 'favicon.ico')
+            const faviconUrl = `${originFromUrl(link)}/favicon.ico`
             resolve({
               [link]: {
                 title,
