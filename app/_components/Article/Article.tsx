@@ -7,6 +7,7 @@ import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import gfm from 'remark-gfm'
 import * as cheerio from 'cheerio'
 import { join } from 'node:path'
+import { FaviconImage } from './FaviconImage'
 
 type CardLink = {
   title: string
@@ -23,7 +24,7 @@ const extractLinks = (mdText: string): string[] | null => {
   return mdText.match(UrlRegexp)
 }
 
-const hostnaemFromUrl = (urlStr: string): string => {
+const hostnameFromUrl = (urlStr: string): string => {
   const url = new URL(urlStr)
   return url.host
 }
@@ -40,26 +41,49 @@ async function ogFetch(links: string[] | null): Promise<CardLinkInfos | null> {
         fetch(link)
           .then(res => res.text())
           .then(text => {
+            let title = ''
+            let description = ''
+            let imageUrl = ''
             const $ = cheerio.load(text)
             const ogImage = $('meta[property="og:image"]').attr('content')
-            const ogUrl = $('meta[property="og:url"]').attr('content')
+            if (ogImage) {
+              imageUrl = ogImage
+            } else {
+              imageUrl =
+                $('meta[property="twitter:image"]').attr('content') ?? ''
+            }
             const ogTitle = $('meta[property="og:title"]').attr('content')
+            if (ogTitle) {
+              title = ogTitle
+            } else {
+              const twitterTitle = $('meta[property="twitter:title"]').attr(
+                'content'
+              )
+              if (twitterTitle) {
+                title = twitterTitle
+              } else {
+                title = $('title').text() ?? ''
+              }
+            }
             const ogDescription = $('meta[property="og:description"]').attr(
               'content'
             )
-            if (ogImage && ogTitle && ogUrl) {
-              resolve({
-                [link]: {
-                  title: ogTitle,
-                  imageUrl: ogImage,
-                  hostname: ogUrl ? hostnaemFromUrl(ogUrl) : '',
-                  description: ogDescription ?? '',
-                  faviconUrl: ogUrl
-                    ? join(originFromUrl(ogUrl), 'favicon.ico')
-                    : '',
-                },
-              })
+            if (ogDescription) {
+              description = ogDescription
+            } else {
+              description =
+                $('meta[property="description"]').attr('content') ?? ''
             }
+            const faviconUrl = join(originFromUrl(link), 'favicon.ico')
+            resolve({
+              [link]: {
+                title,
+                imageUrl,
+                hostname: hostnameFromUrl(link),
+                description,
+                faviconUrl,
+              },
+            })
           })
           .catch(err => {
             console.error(err)
@@ -225,14 +249,20 @@ export async function Article({
                       className={classNames(
                         'rounded-md',
                         'border-[1px]',
-                        'h-[130px]'
+                        'hover:bg-gray-50'
                       )}
                     >
                       <a className={classNames('flex', 'h-full')} href={href}>
-                        <div
-                          className={classNames('p-4', 'h-full', 'w-[530px]')}
-                        >
-                          <h1 className={classNames('truncate')}>
+                        <div className={classNames('p-4', 'h-full', 'w-3/5')}>
+                          <h1
+                            className={classNames(
+                              'truncate',
+                              'text-sm',
+                              'sm:text-sm',
+                              'md:text-base',
+                              'lg:text-base'
+                            )}
+                          >
                             {ogInfo.title}
                           </h1>
                           <div
@@ -240,17 +270,28 @@ export async function Article({
                               'text-sm',
                               'text-gray-500',
                               'mt-2',
-                              'truncate'
+                              'truncate',
+                              'hidden',
+                              'sm:hidden',
+                              'md:block',
+                              'lg:block'
                             )}
                           >
                             {ogInfo.description}
                           </div>
-                          <div className={classNames('flex')}>
+                          <div
+                            className={classNames(
+                              'flex',
+                              'items-center',
+                              'mt-2'
+                            )}
+                          >
+                            <FaviconImage src={ogInfo.faviconUrl} />
                             <div
                               className={classNames(
                                 'text-xs',
                                 'text-gray-600',
-                                'mt-2'
+                                'ml-1'
                               )}
                             >
                               {ogInfo.hostname}
@@ -258,10 +299,15 @@ export async function Article({
                           </div>
                         </div>
                         <img
-                          className={classNames('ml-auto')}
+                          className={classNames(
+                            'ml-auto',
+                            'rounded-r-md',
+                            'h-20',
+                            'md:h-32',
+                            'lg:h-32'
+                          )}
                           src={ogInfo.imageUrl}
                           alt="site preview image"
-                          height={100}
                         />
                       </a>
                     </div>
