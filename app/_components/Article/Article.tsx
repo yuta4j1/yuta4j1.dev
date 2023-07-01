@@ -144,6 +144,20 @@ export async function Article({
               />
             ),
             p: ({ node, children, ...props }) => {
+              /**
+               * 独立した行リンクのパースの場合、リンクプレビューカードへの変換を行うが、
+               * 先にpタグ判定され、pタグの下にリンクプレビューカードのdiv要素が来てしまうこととなり、
+               * これが適切なマークアップでないためハイドレーションエラーが発生する。
+               * 
+               * このため、独立した行リンクを判定した場合のみ、pタグではなくdivタグへの変換を行う
+               */
+              if ((children[0] as any)?.props?.href) {
+                return (
+                  <div className={classNames('my-6')} {...props}>
+                    {children}
+                  </div>
+                )
+              }
               return (
                 <p className={classNames('py-2')} {...props}>
                   {children}

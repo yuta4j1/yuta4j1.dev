@@ -79,6 +79,7 @@ ver13からは、以下の特徴となった。
 
 ## React Server Componentの振る舞いの違い
 では、React Server ComponentはSSR/SSGの場合振る舞いにどう違いが生じるのか？これも公式ドキュメントに記載があります。
+
 https://nextjs.org/docs/app/building-your-application/rendering#static-rendering
 
 （TODO: 要検証）
