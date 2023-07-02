@@ -38,7 +38,7 @@ export default async function PostEntry({ params }: PageProps) {
           'w-full'
         )}
       >
-        {/* @ts-expect-error Server Component */}
+        {/* @ts-ignore Server Component */}
         <Article title={post.title} mdText={post.content} />
       </div>
     </main>
