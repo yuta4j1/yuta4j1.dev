@@ -331,7 +331,7 @@ export async function Article({
                 <a
                   href={href}
                   className={classNames(
-                    'text-blue-500',
+                    'text-blue-600',
                     'hover:text-blue-700',
                     'hover:underline'
                   )}
