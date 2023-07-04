@@ -1,8 +1,12 @@
 module.exports = {
-    ci: {
-      upload: {
-        target: 'temporary-public-storage',
-      },
+  ci: {
+    collect: {
+      numberOfRuns: 1,
+      startServerCommand: 'npm run start',
+      url: ['http://localhost:3000/'],
     },
-  }
-  
+    upload: {
+      target: 'temporary-public-storage',
+    },
+  },
+}
