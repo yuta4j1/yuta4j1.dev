@@ -1,8 +1,14 @@
 import '../styles/globals.css'
 import { Metadata } from 'next'
-import classNames from 'classnames'
 import Header from './_components/Header'
 import Footer from './_components/Footer'
+import { M_PLUS_1p } from 'next/font/google'
+
+const mPlus1p = M_PLUS_1p({
+  weight: ['400', '500'],
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: 'yuta4j1.dev',
@@ -21,12 +27,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ja">
+    <html lang="ja" className={mPlus1p.className}>
       <meta charSet="UTF-8" />
-      <link
-        href="https://fonts.googleapis.com/css?family=M+PLUS+1p&display=swap"
-        rel="stylesheet"
-      ></link>
       <body>
         <Header />
         {children}
