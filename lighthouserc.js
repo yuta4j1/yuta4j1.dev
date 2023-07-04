@@ -2,7 +2,7 @@ module.exports = {
   ci: {
     collect: {
       numberOfRuns: 1,
-      startServerCommand: 'npx next start',
+      startServerCommand: 'npm install & npm run start',
       url: ['http://localhost:3000/'],
     },
     upload: {
