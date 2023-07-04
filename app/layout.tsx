@@ -28,7 +28,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja" className={mPlus1p.className}>
-      <meta charSet="UTF-8" />
       <body>
         <Header />
         {children}
