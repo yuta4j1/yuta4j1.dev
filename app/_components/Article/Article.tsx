@@ -277,7 +277,7 @@ export async function Article({
                       )}
                     >
                       <a className={classNames('flex', 'h-full')} href={href}>
-                        <div className={classNames('p-4', 'h-full', 'w-3/5')}>
+                        <div className={classNames('p-4', 'w-3/5', 'flex', 'flex-col')}>
                           <h1
                             className={classNames(
                               'truncate',
@@ -307,7 +307,7 @@ export async function Article({
                             className={classNames(
                               'flex',
                               'items-center',
-                              'mt-2'
+                              'mt-auto'
                             )}
                           >
                             <FaviconImage src={ogInfo.faviconUrl} />
