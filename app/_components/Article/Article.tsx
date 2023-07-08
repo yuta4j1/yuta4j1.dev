@@ -7,6 +7,13 @@ import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import gfm from 'remark-gfm'
 import * as cheerio from 'cheerio'
 import { FaviconImage } from './FaviconImage'
+import { Noto_Sans_JP } from 'next/font/google'
+
+const notoSansJp = Noto_Sans_JP({
+  weight: ['400'],
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 type CardLink = {
   title: string
@@ -32,6 +39,7 @@ const originFromUrl = (urlStr: string): string => {
   return url.origin
 }
 
+// リンクプレビューカードを作成するためのデータ取得
 async function ogFetch(links: string[] | null): Promise<CardLinkInfos | null> {
   if (!links) return null
   const fetchAll = links.map(
@@ -106,6 +114,7 @@ export async function Article({
   mdText: string
 }) {
   const ogTargetLinks = extractLinks(mdText)
+  // 独立したリンクの情報マップ
   const cardLinkInfos = await ogFetch(ogTargetLinks)
 
   return (
@@ -131,7 +140,8 @@ export async function Article({
                   'border-b-2',
                   'border-gray-300',
                   'mt-10',
-                  'mb-4'
+                  'mb-4',
+                  'font-bold'
                 )}
               >
                 {children}
@@ -148,7 +158,7 @@ export async function Article({
                * 独立した行リンクのパースの場合、リンクプレビューカードへの変換を行うが、
                * 先にpタグ判定され、pタグの下にリンクプレビューカードのdiv要素が来てしまうこととなり、
                * これが適切なマークアップでないためハイドレーションエラーが発生する。
-               * 
+               *
                * このため、独立した行リンクを判定した場合のみ、pタグではなくdivタグへの変換を行う
                */
               if ((children[0] as any)?.props?.href) {
@@ -260,6 +270,7 @@ export async function Article({
                   return (
                     <div
                       className={classNames(
+                        notoSansJp.className,
                         'rounded-md',
                         'border-[1px]',
                         'hover:bg-gray-50'
