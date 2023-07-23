@@ -4,6 +4,13 @@ import Link from 'next/link'
 import { Tag } from './Tag'
 import type { Post } from '../../../interfaces/post'
 import nodeEmoji from 'node-emoji'
+import { Noto_Sans_JP } from 'next/font/google'
+
+const notoSansJp = Noto_Sans_JP({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 const mdContentOutset = (content: string): string => {
   return content.slice(0, 100) + '...'
@@ -46,7 +53,13 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
           </div>
         </Link>
         <div className={classNames('ml-6', 'w-full')}>
-          <p className={classNames('font-semibold', 'text-lg')}>
+          <p
+            className={classNames(
+              'font-semibold',
+              'text-lg',
+              notoSansJp.className
+            )}
+          >
             <Link href={`/post/${slug}`}>{title}</Link>
           </p>
           <p
