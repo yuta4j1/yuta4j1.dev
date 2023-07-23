@@ -23,7 +23,7 @@ export const Footer = () => {
           'text-center'
         )}
       >
-        <span className={classNames('w-full')}>
+        <span className={classNames('w-full', 'font-sans', 'font-light')}>
           ©️ 2022 yuta4j1. All rights reserved.
         </span>
       </div>

@@ -10,7 +10,7 @@ import { FaviconImage } from './FaviconImage'
 import { Noto_Sans_JP } from 'next/font/google'
 
 const notoSansJp = Noto_Sans_JP({
-  weight: ['400'],
+  weight: ['400', '700'],
   subsets: ['latin'],
   display: 'swap',
 })
@@ -122,7 +122,15 @@ export async function Article({
       <div
         className={classNames('w-12', 'h-2', 'bg-blue-400', 'mx-6', 'mb-6')}
       ></div>
-      <h1 className={classNames('font-bold', 'py-2', 'px-6', 'text-3xl')}>
+      <h1
+        className={classNames(
+          'font-bold',
+          'py-2',
+          'px-6',
+          'text-3xl',
+          notoSansJp.className
+        )}
+      >
         {title}
       </h1>
       <div className={classNames('px-6', 'py-4')}>
@@ -141,7 +149,8 @@ export async function Article({
                   'border-gray-300',
                   'mt-10',
                   'mb-4',
-                  'font-bold'
+                  'font-bold',
+                  notoSansJp.className
                 )}
               >
                 {children}
@@ -149,7 +158,13 @@ export async function Article({
             ),
             h3: ({ node, ...props }) => (
               <h3
-                className={classNames('pt-4', 'pb-1', 'text-xl', 'font-bold')}
+                className={classNames(
+                  'pt-4',
+                  'pb-1',
+                  'text-xl',
+                  'font-bold',
+                  notoSansJp.className
+                )}
                 {...props}
               />
             ),
@@ -277,7 +292,14 @@ export async function Article({
                       )}
                     >
                       <a className={classNames('flex', 'h-full')} href={href}>
-                        <div className={classNames('p-4', 'w-3/5', 'flex', 'flex-col')}>
+                        <div
+                          className={classNames(
+                            'p-4',
+                            'w-3/5',
+                            'flex',
+                            'flex-col'
+                          )}
+                        >
                           <h1
                             className={classNames(
                               'truncate',
