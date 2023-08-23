@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import { Metadata } from 'next'
 import Header from './_components/Header'
 import Footer from './_components/Footer'
+import classNames from 'classnames'
 import { M_PLUS_1p } from 'next/font/google'
 
 const mPlus1p = M_PLUS_1p({
@@ -27,7 +28,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja" className={mPlus1p.className}>
-      <body>
+      <body className={classNames('flex', 'flex-col', 'h-screen')}>
         <Header />
         {children}
         <Footer />

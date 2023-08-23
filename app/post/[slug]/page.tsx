@@ -28,7 +28,7 @@ export default async function PostEntry({ params }: PageProps) {
   const post = await getPostBySlug(slug, ['slug', 'title', 'content'])
 
   return (
-    <main className={classNames('flex', 'justify-center', 'mt-10')}>
+    <main className={classNames('flex', 'justify-center', 'mt-10', 'grow')}>
       <div
         className={classNames(
           'sm:w-11/12',

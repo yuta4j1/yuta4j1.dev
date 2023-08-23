@@ -10,7 +10,8 @@ export const Footer = () => {
         'py-8',
         'border-solid',
         'border-t-2',
-        'items-center'
+        'items-center',
+        'shrink-0'
       )}
     >
       <div
