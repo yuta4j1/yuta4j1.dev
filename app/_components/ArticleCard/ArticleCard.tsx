@@ -52,7 +52,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
             </span>
           </div>
         </Link>
-        <div className={classNames('ml-6', 'w-full')}>
+        <div className={classNames('flex', 'flex-col', 'ml-6', 'w-full')}>
           <p
             className={classNames(
               'font-semibold',
@@ -67,13 +67,14 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
               'py-2',
               'text-sm',
               'text-gray-600',
-              'max-sm:hidden'
+              'max-sm:hidden',
+              'flex-grow'
             )}
           >
             {mdContentOutset(content)}
           </p>
 
-          <div className={classNames('flex')}>
+          <div className={classNames('flex', 'flex-shrink-0')}>
             <div>{tags && tags.map((v, i) => <Tag key={i}>{v}</Tag>)}</div>
             <div className={classNames('ml-auto')}>
               <span className={classNames('text-gray-500', 'text-sm')}>
