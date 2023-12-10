@@ -150,7 +150,7 @@ export async function Article({
                       'py-3',
                       'text-2xl',
                       'border-solid',
-                      'border-b-2',
+                      'border-b',
                       'border-gray-300',
                       'mt-10',
                       'mb-4',
