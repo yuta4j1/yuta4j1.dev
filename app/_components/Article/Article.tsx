@@ -300,7 +300,9 @@ export async function Article({
                           notoSansJp.className,
                           'rounded-md',
                           'border-[1px]',
-                          'hover:bg-gray-50'
+                          'hover:bg-gray-50',
+                          'hover:transition-all',
+                          'duration-150'
                         )}
                       >
                         <a className={classNames('flex', 'h-full')} href={href}>
