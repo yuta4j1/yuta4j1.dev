@@ -7,7 +7,8 @@ export const Footer = () => {
       className={classNames(
         'flex',
         'justify-center',
-        'py-8',
+        'py-2',
+        'md:py-8',
         'border-solid',
         'border-t-2',
         'items-center',
@@ -24,7 +25,15 @@ export const Footer = () => {
           'text-center'
         )}
       >
-        <span className={classNames('w-full', 'font-sans', 'font-light')}>
+        <span
+          className={classNames(
+            'w-full',
+            'font-sans',
+            'font-light',
+            'text-xs',
+            'md:text-base'
+          )}
+        >
           ©️ 2022 yuta4j1. All rights reserved.
         </span>
       </div>
