@@ -24,7 +24,10 @@ const PagingButton: FC<{ idx: number; isCurrent?: boolean }> = ({
         'border',
         isCurrent ? 'border-blue-500' : 'border-white',
         'rounded-full',
-        'text-center'
+        'text-center',
+        'hover:bg-blue-200',
+        'hover:transition-all',
+        'duration-150'
       )}
       onClick={() => {}}
     >
