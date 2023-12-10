@@ -1,4 +1,3 @@
-import React from 'react'
 import classNames from 'classnames'
 import Link from 'next/link'
 import { Tag } from './Tag'
@@ -43,38 +42,41 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
             className={classNames(
               'bg-blue-100',
               'rounded-lg',
-              'p-7',
+              'p-5',
+              'md:p-7',
               'text-center'
             )}
           >
-            <span className={classNames('text-5xl')}>
+            <span className={classNames('text-3xl', 'md:text-5xl')}>
               {nodeEmoji.emojify(`:${emoji}:`)}
             </span>
           </div>
         </Link>
         <div className={classNames('flex', 'flex-col', 'ml-6', 'w-full')}>
-          <p
-            className={classNames(
-              'font-semibold',
-              'text-lg',
-              notoSansJp.className
-            )}
-          >
-            <Link href={`/post/${slug}`}>{title}</Link>
-          </p>
-          <p
-            className={classNames(
-              'py-2',
-              'text-sm',
-              'text-gray-600',
-              'max-sm:hidden',
-              'flex-grow'
-            )}
-          >
-            {mdContentOutset(content)}
-          </p>
+          <div className={classNames('flex-grow')}>
+            <p
+              className={classNames(
+                'font-semibold',
+                'md:text-lg',
+                notoSansJp.className
+              )}
+            >
+              <Link href={`/post/${slug}`}>{title}</Link>
+            </p>
+            <p
+              className={classNames(
+                'py-2',
+                'text-sm',
+                'text-gray-600',
+                'max-sm:hidden',
+                'flex-grow'
+              )}
+            >
+              {mdContentOutset(content)}
+            </p>
+          </div>
 
-          <div className={classNames('flex', 'flex-shrink-0')}>
+          <div className={classNames('flex', 'flex-shrink-0', 'flex-wrap')}>
             <div>{tags && tags.map((v, i) => <Tag key={i}>{v}</Tag>)}</div>
             <div className={classNames('ml-auto')}>
               <span className={classNames('text-gray-500', 'text-sm')}>
