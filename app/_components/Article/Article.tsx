@@ -1,4 +1,3 @@
-import React from 'react'
 import Image from 'next/image'
 import classNames from 'classnames'
 import ReactMarkdown from 'react-markdown'
@@ -6,7 +5,7 @@ import Syntax from 'react-syntax-highlighter/dist/esm/prism'
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import gfm from 'remark-gfm'
 import * as cheerio from 'cheerio'
-import { FaviconImage } from './FaviconImage'
+import { PreviewCard } from './PreviewCard'
 import { Noto_Sans_JP } from 'next/font/google'
 import Scroller from '../Scroller'
 
@@ -107,17 +106,11 @@ async function ogFetch(links: string[] | null): Promise<CardLinkInfos | null> {
   return res
 }
 
-export async function Article({
-  title,
-  mdText,
-}: {
+export const Article: React.FC<{
   title: string
   mdText: string
-}) {
-  const ogTargetLinks = extractLinks(mdText)
-  // 独立したリンクの情報マップ
-  const cardLinkInfos = await ogFetch(ogTargetLinks)
-
+  cardLinkInfos: CardLinkInfos | null
+}> = ({ title, mdText, cardLinkInfos }) => {
   return (
     <Scroller>
       <article className={classNames('mb-16', 'leading-loose')}>
@@ -294,84 +287,7 @@ export async function Article({
                 if (cardLinkInfos) {
                   const ogInfo = cardLinkInfos[href ?? '']
                   if (ogInfo) {
-                    return (
-                      <div
-                        className={classNames(
-                          notoSansJp.className,
-                          'rounded-md',
-                          'border-[1px]',
-                          'hover:bg-gray-50',
-                          'hover:transition-all',
-                          'duration-150'
-                        )}
-                      >
-                        <a className={classNames('flex', 'h-full')} href={href}>
-                          <div
-                            className={classNames(
-                              'p-4',
-                              'w-3/5',
-                              'flex',
-                              'flex-col'
-                            )}
-                          >
-                            <h1
-                              className={classNames(
-                                'truncate',
-                                'text-sm',
-                                'sm:text-sm',
-                                'md:text-base',
-                                'lg:text-base'
-                              )}
-                            >
-                              {ogInfo.title}
-                            </h1>
-                            <div
-                              className={classNames(
-                                'text-sm',
-                                'text-gray-500',
-                                'mt-2',
-                                'truncate',
-                                'hidden',
-                                'sm:hidden',
-                                'md:block',
-                                'lg:block'
-                              )}
-                            >
-                              {ogInfo.description}
-                            </div>
-                            <div
-                              className={classNames(
-                                'flex',
-                                'items-center',
-                                'mt-auto'
-                              )}
-                            >
-                              <FaviconImage src={ogInfo.faviconUrl} />
-                              <div
-                                className={classNames(
-                                  'text-xs',
-                                  'text-gray-600',
-                                  'ml-1'
-                                )}
-                              >
-                                {ogInfo.hostname}
-                              </div>
-                            </div>
-                          </div>
-                          <img
-                            className={classNames(
-                              'ml-auto',
-                              'rounded-r-md',
-                              'h-20',
-                              'md:h-32',
-                              'lg:h-32'
-                            )}
-                            src={ogInfo.imageUrl}
-                            alt="site preview image"
-                          />
-                        </a>
-                      </div>
-                    )
+                    return <PreviewCard href={href} ogInfo={ogInfo} />
                   }
                 }
                 return (
@@ -429,4 +345,18 @@ export async function Article({
       </article>
     </Scroller>
   )
+}
+
+export async function ArticleContainer({
+  title,
+  mdText,
+}: {
+  title: string
+  mdText: string
+}) {
+  const ogTargetLinks = extractLinks(mdText)
+  // 独立したリンクの情報マップ
+  const cardLinkInfos = await ogFetch(ogTargetLinks)
+
+  return <Article title={title} mdText={mdText} cardLinkInfos={cardLinkInfos} />
 }
