@@ -1,4 +1,4 @@
-import React from 'react'
+import type { FC } from 'react'
 import classNames from 'classnames'
 import ArticleCard from '../ArticleCard'
 import Pagination from '../Pagination'
@@ -6,7 +6,7 @@ import type { Post } from '../../../interfaces/post'
 
 const PER_PAGE_POST_NUM = 10
 
-export const PostList: React.FC<{ posts: Post[] }> = ({ posts }) => {
+export const PostList: FC<{ posts: Post[] }> = ({ posts }) => {
   const showPagination = posts.length > PER_PAGE_POST_NUM
   const lastPageIndex = (): number => {
     if (!showPagination) {
