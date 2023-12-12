@@ -41,12 +41,19 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
   return items
 }
 
+const stringToDate = (src: string): Date => {
+  return new Date(src.split('.').join('-'))
+}
+
 export function getAllPosts(fields: string[] = []) {
   const slugs = getPostSlugs()
-  // console.log('slugs', slugs)
   const posts = slugs
     .map(slug => getPostBySlug(slug, fields))
     // sort posts by date in descending order
-    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
+    .sort((post1, post2) => {
+      const post1Date = stringToDate(post1.date)
+      const post2Date = stringToDate(post2.date)
+      return post1Date > post2Date ? -1 : 1
+    })
   return posts as unknown as Post[]
 }
