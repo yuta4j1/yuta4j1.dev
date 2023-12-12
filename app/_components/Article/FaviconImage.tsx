@@ -1,9 +1,14 @@
 'use client'
-import React from 'react'
+import type { FC } from 'react'
 import classNames from 'classnames'
 
-export const FaviconImage: React.FC<{ src: string }> = ({ src }) => {
+export const FaviconImage: FC<{ src: string }> = ({ src }) => {
   return (
-    <img className={classNames('h-4')} src={src} alt="" onError={e => {}} />
+    <img
+      className={classNames('h-4', 'w-4')}
+      src={src}
+      onError={e => {}}
+      alt=""
+    />
   )
 }
