@@ -114,7 +114,9 @@ export const Article: React.FC<{
 }> = ({ title, mdText, cardLinkInfos }) => {
   return (
     <Scroller>
-      <article className={classNames('mb-16', 'leading-loose')}>
+      <article
+        className={classNames('mb-16', 'leading-loose', 'text-gray-800')}
+      >
         <div
           className={classNames('w-12', 'h-2', 'bg-blue-400', 'mx-6', 'mb-6')}
         ></div>
@@ -124,6 +126,7 @@ export const Article: React.FC<{
             'py-2',
             'px-6',
             'text-3xl',
+            'text-black',
             notoSansJp.className
           )}
         >
@@ -142,6 +145,7 @@ export const Article: React.FC<{
                   <h2
                     className={classNames(
                       'py-3',
+                      'text-black',
                       'text-2xl',
                       'border-solid',
                       'border-b',
@@ -169,6 +173,7 @@ export const Article: React.FC<{
                     'pb-1',
                     'text-xl',
                     'font-bold',
+                    'text-black',
                     notoSansJp.className
                   )}
                   {...props}
