@@ -8,6 +8,7 @@ import * as cheerio from 'cheerio'
 import { PreviewCard } from './PreviewCard'
 import { Noto_Sans_JP } from 'next/font/google'
 import Scroller from '../Scroller'
+import { H2Link } from './H2Link'
 
 const notoSansJp = Noto_Sans_JP({
   weight: ['400', '700'],
@@ -157,7 +158,7 @@ export const Article: React.FC<{
                     )}
                     id={locationHash}
                   >
-                    <a href={locationHash}>{children}</a>
+                    <H2Link locationHash={locationHash}>{children}</H2Link>
                   </h2>
                 )
               },
