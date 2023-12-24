@@ -204,7 +204,7 @@ export const Article: React.FC<{
                 const match = /language-(\w+)/.exec(className || '')
                 return !inline && match ? (
                   <Syntax
-                    className={classNames('text-xs', 'md:text-base')}
+                    className={classNames('text-sm', 'md:text-base')}
                     style={oneDark}
                     language={match[1]}
                     // eslint-disable-next-line
