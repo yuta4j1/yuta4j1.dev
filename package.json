@@ -12,7 +12,7 @@
     "markuplint": "markuplint \"./app/**/*.{jsx,tsx}\""
   },
   "dependencies": {
-    "@types/node": "18.16.19",
+    "@types/node": "18.19.59",
     "@types/react": "18.2.43",
     "@types/react-dom": "18.2.17",
     "cheerio": "^1.0.0-rc.12",
